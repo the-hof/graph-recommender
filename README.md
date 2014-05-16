@@ -40,3 +40,15 @@ This will create a new folder called "graph-recommender" and download the latest
 Making a virtual environment for the project
 ------------
 
+To create a virtual environment (you'll only do this once per project), do this:
+
+$ virtualenv graph-recommender
+
+you'll see it installing pip and setuptools, just let it do what it wants.
+
+Next you'll want to actually go into the virtual environment:
+
+$ cd graph-recommender
+$ source bin/activate
+
+The activate script takes all the necessary steps to keep your python project self-contained.  You'll see (graoh-recommender) as part of your command line, that's how you know you're in a virtual environment.  Note that you'll need to do "source bin/activate" each time you open a new terminal.  It doesn't remember from one terminal session to the next that you were in a virtual environment.
