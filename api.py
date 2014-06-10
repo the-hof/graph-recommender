@@ -64,8 +64,8 @@ def UpsertRating(user, item, rating):
     else:
         for rel in result:
             r = rel.pop()
-            print r
-            print r.get("rating")
+            if r["rating"] != rating:
+                r["rating"] = rating
 
 
 ##################################
