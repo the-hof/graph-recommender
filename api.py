@@ -102,10 +102,25 @@ def rating (userid, itemid, rating):
 #http://127.0.0.1:5000/recommenderitems/572/7/50/detail or http://127.0.0.1:5000/recommenderitems/572/7/50
 
 def recommenderitems (userid, itemid, numitems, mode):
+    db = GraphDatabase("http://localhost:7474/db/data/")
 
-    results = WrapCallbackString("hello world")
+    q = "START item = node(*) MATCH me-[prevrated]-item-[rated]-simuser-[alsorated]-maylike "
+    q += "WHERE item.itemid! = '" + itemid + "' "
+    q += "and me.userid! = '" + userid + "' "
+    q += "and prevrated.rating! = rated.rating! and alsorated.rating! = 5 "
+    q += "RETURN distinct maylike";
 
-    resp = Response(response=results,
+    params = {}
+    result = db.query(q, params=params, returns=(client.Node, unicode, client.Relationship))
+    if len(result) == 0:
+        results = "none found"
+    else:
+        results = []
+        for rel in result:
+            r = rel.pop()
+            results.append(r["itemid"])
+
+    resp = Response(response=WrapCallbackString(results),
                     status=200,
                     mimetype="application/json")
 
