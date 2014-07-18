@@ -51,7 +51,7 @@ Next you'll want to actually go into the virtual environment:
     $ cd graph-recommender
     $ source bin/activate
 
-The activate script takes all the necessary steps to keep your python project self-contained.  You'll see (graoh-recommender) as part of your command line, that's how you know you're in a virtual environment.  Note that you'll need to do "source bin/activate" each time you open a new terminal.  It doesn't remember from one terminal session to the next that you were in a virtual environment.
+The activate script takes all the necessary steps to keep your python project self-contained.  You'll see (graph-recommender) as part of your command line, that's how you know you're in a virtual environment.  Note that you'll need to do "source bin/activate" each time you open a new terminal.  It doesn't remember from one terminal session to the next that you were in a virtual environment.
 
 Install dependencies
 ------------
